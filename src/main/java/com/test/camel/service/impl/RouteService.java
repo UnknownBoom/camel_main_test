@@ -63,6 +63,7 @@ public class RouteService implements com.test.camel.service.RouteService {
         if (existsInContext(newRouteDefinition)) {
             throw new IllegalArgumentException("Duplicate route endpoint");
         }
+        // replace route with same id
         context.addRouteDefinition(newRouteDefinition);
     }
 
