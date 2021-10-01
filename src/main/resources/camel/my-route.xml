@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://camel.apache.org/schema/spring">
+
+    <route id="logRouter">
+        <from uri="direct:log"/>
+        <process ref="logProcessor"/>
+    </route>
+
+    <route id="jettyRouteTest">
+        <from uri="jetty:http://127.0.0.1:8056/test"/>
+        <unmarshal>
+            <json library="Jackson"/>
+        </unmarshal>
+        <process ref="helloWorldProcessor"/>
+        <to uri="direct:log"/>
+    </route>
+</routes>
